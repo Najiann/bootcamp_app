@@ -18,7 +18,8 @@ class Database {
     public function getConnection() {
         return $this->conn;
     }
+
 }
 
 $db = new Database();
-$conn = $db->getConnection();
+$conn = $db->getConnection();   

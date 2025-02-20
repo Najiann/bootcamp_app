@@ -1,7 +1,14 @@
 <?php
-session_start();
-?>
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+include 'db.php';
+
+// Ambil data kursus dari database
+$sql = "SELECT * FROM courses"; // Sesuaikan dengan nama tabel kamu
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -13,27 +20,7 @@ session_start();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- ini CSS untuk bagian kelas2 -->
   <style>
-        .carousel-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding: 20px 0;
-        }
-        .carousel {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 10px;
-            white-space: nowrap;
-        }
-        .carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .course-card {
-            min-width: 320px;
+        .product-card {
             background: #fff;
             padding: 20px;
             border-radius: 15px;
@@ -41,57 +28,30 @@ session_start();
             text-align: center;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
-        .course-card:hover {
+        .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-        .course-img {
+        .product-img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             border-radius: 10px;
         }
-        .course-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #333;
-        }
-        .course-price {
+        .price-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
             font-size: 1.1rem;
-            color: #007bff;
             font-weight: bold;
         }
-        .btn {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
         }
-        .btn:hover {
-            background: #0056b3;
+        .discounted-price {
+            color: #007bff;
         }
-        .scroll-btn {
-            position: absolute;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border: none;
-            padding: 12px;
-            cursor: pointer;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-        .scroll-btn:hover {
-            background: rgba(0,0,0,0.8);
-        }
-        .left { left: 10px; }
-        .right { right: 10px; }
     </style>
 
 </head>
@@ -119,25 +79,21 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="#reviews">Testimonials</a>
             </li>
-            <?php if (isset($_SESSION["user_id"])): ?>
-              <!-- yang berhasil -->
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.php">Dashboard</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                        <img src="path_to_user_image.jpg" alt="Profile" class="rounded-circle" width="30" height="30">
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="profile.php">Profil</a></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
-                    </ul>
-                </li>
+          </ul>
+          <ul class="navbar-nav">
+            <?php if (isset($_SESSION['user_id'])): ?>
+              <!-- Jika sudah login, tampilkan tombol Dashboard -->
+              <li class="nav-item">
+                <a class="nav-link" href="dashboard.php">Dashboard</a>
+              </li>
             <?php else: ?>
-              <!-- yg gagal masauk -->
-                <li class="nav-item">
-                    <a class="nav-link bg-warning px-3 rounded-3" href="login.php" id="joinUs">LOGIN</a>
-                </li>
+              <!-- Jika belum login, tampilkan Login & Register -->
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="register.php">Register</a>
+              </li>
             <?php endif; ?>
           </ul>
         </div>
@@ -147,7 +103,6 @@ session_start();
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-
   <section id="hero" class="text-white">
     <div class="container">
       <h5 class="fw-bold bg-primary d-inline-block px-3 py-1 rounded">POWERFULL</h5>
@@ -156,8 +111,7 @@ session_start();
       
       <!-- Butonlar -->
       <div class="d-flex gap-5">
-        <a href="register.php" class="btn btn-primary btn-lg px-4">Register</a>
-        <a href="#" class="btn btn-outline-light btn-lg px-4">Details</a>
+     <a href="#" class="btn btn-primary btn-lg px-4">Details</a>
       </div>
     </div>
   </section>
@@ -354,44 +308,45 @@ session_start();
             <div class="side-left"></div>
             <div class="side-right"></div>
             <div class="trainer-image">
-              <img src="images/anandaaaaaaaaa.jpg" alt="Trainer">
+              <img src="images/busis.jpeg" alt="Trainer">
               <div class="trainer-info">
-                <h4 class="trainer-name">Ananda Wisnu</h4>
-                <p class="trainer-title">Pacar Admin</p>
+                <h4 class="trainer-name">Siska Rahmadani,S.Kom</h4>
+                <p class="trainer-title">guru cyber security</p>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Trainer 2 -->
-        <div class="col-lg-4">
-          <div class="trainer-card">
-            <div class="side-left"></div>
-            <div class="side-right"></div>
-            <div class="trainer-image">
-              <img src="images/ICUUUUUUUUUUUU .jpg" alt="Trainer">
-              <div class="trainer-info">
-                <h4 class="trainer-name">Ayunda Risu</h4>
-                <p class="trainer-title">Pacar Admin Juga 😋</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        
         <!-- Trainer 3 -->
         <div class="col-lg-4">
           <div class="trainer-card">
             <div class="side-left"></div>
             <div class="side-right"></div>
             <div class="trainer-image">
-              <img src="images/okayuuuuuuu.jpg" alt="Trainer">
+              <img src="images/paher.jpg" alt="Trainer">
               <div class="trainer-info">
-                <h4 class="trainer-name">nekomata okayu</h4>
-                <p class="trainer-title">Yang ini apa lagi 😋</p>
+                <h4 class="trainer-name">HERI SRI PURNOMO, S.Kom.</h4>
+                <p class="trainer-title">pemrograman WEB</p>
               </div>
             </div>
           </div>
         </div>
+        
+        <!-- Trainer 2 -->
+        <div class="col-lg-4">
+          <div class="trainer-card">
+            <div class="side-left"></div>
+            <div class="side-right"></div>
+            <div class="trainer-image">
+              <img src="images/bucic.jpg" alt="Trainer">
+              <div class="trainer-info">
+                <h4 class="trainer-name">CICIH SRI RAHAYU, S.Kom.</h4>
+                <p class="trainer-title">kepala pemrograman</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -409,10 +364,57 @@ session_start();
            Dari pemrograman hingga keamanan siber, kami menyediakan kursus lengkap untuk membangun karier impian Anda!
         </p>
       </div>
+      <?php
+// List gambar secara manual
+$images = [
+    "images/course1.jpg",
+    "images/course2.jpg",
+    "images/course3.jpg",
+    "images/course4.jpg",
+    "images/course5.jpg",
+    "images/course6.jpg",
+    "images/course7.jpg",
+    "images/course8.jpg",
+    "images/course9.jpg",
+];
 
-      
-      </div>
+$i = 0;
+?>
+
+<div class="carousel-container">
+    <div class="container py-5">
+        <div class="row g-4">
+            <?php while ($row = $result->fetch_assoc()) : 
+                // Ambil data dari database
+                $gambar = $images[$i % count($images)];
+                $judul = $row['judul'];
+                $deskripsi = $row['deskripsi'];
+                $harga_awal = number_format($row['harga'], 0, ',', '.');
+            ?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="<?= $gambar ?>" alt="<?= htmlspecialchars($judul) ?>" class="product-img">
+                        <h3 class="product-title"><?= htmlspecialchars($judul) ?></h3>
+                        <p class="product-desc"><?= htmlspecialchars($deskripsi) ?></p>
+                        <div class="price-container">
+                            <span class="price">Rp<?= $harga_awal ?></span>
+                        </div>
+                        <a href="transaksi.php?course_id=<?= $row['course_id'] ?>" class="btn btn-primary w-100">Daftar Sekarang</a>
+                    </div>
+                </div>
+            <?php 
+                $i++;
+            endwhile;
+            ?>
+        </div>
     </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<?php $conn->close(); // Tutup koneksi ?>
+
+
   </section>
 
   <section id="reviews" class="py-5">
@@ -467,73 +469,8 @@ session_start();
       </div>
     </div>
   </section>
-                <!-- code yaang kelas2 itu -->
-  <div class="container">
-  <div class="text-center mb-5">
-        <h2 class="display-4 fw-bold text-primary">Bootcamp Coding Courses</h2>
-        <div class="d-flex justify-content-center">
-          <div class="bg-warning" style="height: 10px; width: 100px; border-radius: 100px;"></div>
-        </div>
-        <p class="mt-4 text-secondary col-lg-8 mx-auto" style="font-weight: 800;">
-        Belajar coding dengan mentor terbaik dan kurikulum berbasis industri.
-        </p>
-      </div>   
-    <div class="carousel-container">
-        <button class="scroll-btn left" onclick="scrollLeft()"><i class="fas fa-chevron-left"></i></button>
-        <div class="carousel">
-            <div class="course-card">
-                <img src="images/course1.jpg" alt="Python for Machine Learning" class="course-img">
-                <h3 class="course-title">Python for ML & Data Science</h3>
-                <p class="course-price">Rp549.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-            <div class="course-card">
-                <img src="images/course2.jpg" alt="Machine Learning A-Z" class="course-img">
-                <h3 class="course-title">Machine Learning A-Z</h3>
-                <p class="course-price">Rp599.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-            <div class="course-card">
-                <img src="images/course3.jpg" alt="Fullstack Web Development" class="course-img">
-                <h3 class="course-title">Fullstack Web Dev</h3>
-                <p class="course-price">Rp649.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-            <div class="course-card">
-                <img src="images/course4.jpg" alt="Flutter & Dart" class="course-img">
-                <h3 class="course-title">Flutter & Dart</h3>
-                <p class="course-price">Rp649.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-            <div class="course-card">
-                <img src="images/course5.jpg" alt="Cyber Security" class="course-img">
-                <h3 class="course-title">Cyber Security</h3>
-                <p class="course-price">Rp279.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-            <div class="course-card">
-                <img src="images/course6.jpg" alt="UI/UX Design" class="course-img">
-                <h3 class="course-title">UI/UX Design</h3>
-                <p class="course-price">Rp599.000</p>
-                <button class="btn">Daftar Sekarang</button>
-            </div>
-
-        </div>
-        <button class="scroll-btn right" onclick="scrollRight()"><i class="fas fa-chevron-right"></i></button>
-    </div>
-</div>
-
-<!-- jsnya kelas2 itu -->
-<script>
-  function scrollLeft() {
-      document.querySelector(".carousel").scrollBy({ left: -320, behavior: "smooth" });
-  }
-  function scrollRight() {
-      document.querySelector(".carousel").scrollBy({ left: 320, behavior: "smooth" });
-  }
-</script>
-
-  <footer class="bg-primary text-white py-5">
+                
+  <footer class=" text-white py-5">
     <div class="container">
       <!-- Logo - Sola hizalı -->
       <div class="mb-0">
