@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User();
     if ($user->login($email, $password)) {
         echo "Login berhasil!";
-        header("Location: index.php"); // Redirect ke halaman dashboard
+        header("Location: dashboard.php"); 
         exit();
     } else {
         echo "Login gagal! Periksa email dan password.";

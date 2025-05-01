@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         session_start();
         $_SESSION["user_id"] = $user->getLastInsertedId(); 
 
-        header("Location: index.php"); 
+        header("Location: dashboard.php"); 
         exit;
     } else {
         echo "Registrasi gagal!";
