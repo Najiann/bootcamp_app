@@ -23,7 +23,10 @@ if ($userId && empty($_SESSION['profile_image'])) {
 }
 
 // Path profil
-$profile_path = file_exists("images/image_profil/" . $userImage) ? "images/image_profil/" . $userImage : "images/image_profil/default.png";
+$profile_path = (strpos($userImage, 'images/image_profil/') === 0) ? $userImage : "images/image_profil/default.png";
+if (!file_exists($profile_path)) {
+    $profile_path = "images/image_profil/default.png";
+}
 ?>
 
 <nav class="navbar navbar-expand-lg bg-white shadow-sm">

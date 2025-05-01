@@ -84,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (!$stmt->execute()) {
                     die("Gagal menyimpan path foto: " . $stmt->error);
                 }
+                $_SESSION['nama_user'] = $nama;  // Tambahkan ini untuk memperbarui nama di session
                 $_SESSION['profile_image'] = $targetFilePath;
             } else {
                 die("Gagal mengupload foto.");

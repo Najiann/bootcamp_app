@@ -1,17 +1,13 @@
-<section id="purchase" class="py-5">
-    <div class="container">
-      <!-- Başlık -->
-      <div class="text-center mb-5">
-        <h2 class="display-4 fw-bold text-primary">BUILD YOUR TECH CAREER WITH US</h2>
-        <div class="d-flex justify-content-center">
-          <div class="bg-warning" style="height: 10px; width: 100px; border-radius: 100px;"></div>
-        </div>
-        <p class="mt-4 text-secondary col-lg-8 mx-auto" style="font-weight: 800;">
-          Pelajari keterampilan teknologi terbaru dengan kurikulum berbasis industri.
-           Dari pemrograman hingga keamanan siber, kami menyediakan kursus lengkap untuk membangun karier impian Anda!
-        </p>
-      </div>
-      <?php
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+include 'db.php';
+
+$sql = "SELECT * FROM courses";
+$result = $conn->query($sql);
+
 // List gambar secara manual
 $images = [
     "images/course1.jpg",
@@ -28,38 +24,162 @@ $images = [
 $i = 0;
 ?>
 
-<div class="carousel-container">
-    <div class="container py-5">
-        <div class="row g-4">
-            <?php while ($row = $result->fetch_assoc()) : 
-                // Ambil data dari database
-                $gambar = $images[$i % count($images)];
-                $judul = $row['judul'];
-                $deskripsi = $row['deskripsi'];
-                $harga_awal = number_format($row['harga'], 0, ',', '.');
-            ?>
-                <div class="col-lg-4 col-md-6">
-                    <div class="product-card">
-                        <img src="<?= $gambar ?>" alt="<?= htmlspecialchars($judul) ?>" class="product-img">
-                        <h3 class="product-title"><?= htmlspecialchars($judul) ?></h3>
-                        <p class="product-desc"><?= htmlspecialchars($deskripsi) ?></p>
-                        <div class="price-container">
-                            <span class="price">Rp<?= $harga_awal ?></span>
-                        </div>
-                        <a href="transaksi.php?course_id=<?= $row['course_id'] ?>" class="btn btn-primary w-100">Daftar Sekarang</a>
-                    </div>
-                </div>
-            <?php 
-                $i++;
-            endwhile;
-            ?>
-        </div>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/logoYGINI.png">
+  <title>BYTEX - Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.5.1/css/all.min.css">
+  <style>
+    .course-header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      padding: 80px 0;
+      color: white;
+      margin-bottom: 50px;
+    }
+    .course-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .course-img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .course-body {
+      padding: 20px;
+    }
+    .course-title {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .course-desc {
+      color: #7f8c8d;
+      margin-bottom: 20px;
+    }
+    .price {
+      font-weight: 700;
+      color: #e74c3c;
+      font-size: 1.2rem;
+    }
+    .category-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e74c3c;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    .filter-buttons {
+      margin-bottom: 30px;
+    }
+    .filter-btn {
+      margin: 0 5px;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <?php include 'header.php'; ?>
+
+  <section class="course-header text-center">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-4">Our Coding Courses</h1>
+      <p class="lead">Master in-demand tech skills with our comprehensive curriculum</p>
     </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<?php $conn->close(); // Tutup koneksi ?>
-
-
   </section>
+
+  <section id="courses" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-4 fw-bold text-primary">OUR CODING PROGRAMS</h2>
+        <div class="d-flex justify-content-center">
+          <div class="bg-warning" style="height: 10px; width: 100px; border-radius: 100px;"></div>
+        </div>
+        <p class="mt-4 text-secondary col-lg-8 mx-auto" style="font-weight: 800;">
+          Tingkatkan karier di dunia teknologi dengan kursus coding dari mentor profesional. Mulai dari pemula hingga mahir,
+          kami menyediakan program yang dirancang untuk membantumu sukses di industri IT.
+        </p>
+      </div>
+
+      <div class="filter-buttons text-center">
+        <button class="filter-btn btn btn-outline-primary active" data-filter="all">All Courses</button>
+        <button class="filter-btn btn btn-outline-primary" data-filter="python">Python</button>
+        <button class="filter-btn btn btn-outline-primary" data-filter="web">Web Development</button>
+        <button class="filter-btn btn btn-outline-primary" data-filter="javascript">JavaScript</button>
+      </div>
+
+      <div class="row g-4">
+        <?php while ($row = $result->fetch_assoc()) : 
+          $gambar = $images[$i % count($images)];
+          $judul = $row['judul'];
+          $deskripsi = $row['deskripsi'];
+          $harga_awal = number_format($row['harga'], 0, ',', '.');
+          $category = strtolower(explode(' ', $judul)[0]);
+        ?>
+          <div class="col-lg-4 col-md-6 course-item" data-category="<?= $category ?>">
+            <div class="course-card">
+              <img src="<?= $gambar ?>" class="course-img" alt="<?= htmlspecialchars($judul) ?>">
+              <div class="course-body">
+                <h3 class="course-title"><?= htmlspecialchars($judul) ?></h3>
+                <p class="course-desc"><?= htmlspecialchars($deskripsi) ?></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="price">Rp<?= $harga_awal ?></span>
+                  <a href="transaksi.php?course_id=<?= $row['course_id'] ?>" class="btn btn-primary">Enroll Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php 
+          $i++;
+        endwhile;
+        ?>
+      </div>
+    </div>
+  </section>
+
+  <?php include 'footer.php'; ?>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filterValue = this.getAttribute('data-filter');
+          const courseItems = document.querySelectorAll('.course-item');
+          
+          courseItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+<?php $conn->close(); ?>
