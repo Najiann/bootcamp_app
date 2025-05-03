@@ -1,6 +1,6 @@
-# 🧠 BootcampSAS - Sistem Manajemen Bootcamp
+# 🧠 Bootcamp BYTEX - Sistem Manajemen Bootcamp
 
-BootcampSAS adalah platform manajemen kursus berbasis web yang dibangun dengan PHP native, dirancang untuk memfasilitasi proses belajar mengajar secara daring. Platform ini mencakup fitur-fitur penting seperti pendaftaran pengguna, pengelolaan kursus, modul pembelajaran, sistem ujian, serta pembuatan sertifikat otomatis.
+Bootcamp BYTEX adalah platform manajemen kursus berbasis web yang dibangun dengan PHP native, dirancang untuk memfasilitasi proses belajar mengajar secara daring. Platform ini mencakup fitur-fitur penting seperti pendaftaran pengguna, pengelolaan kursus, modul pembelajaran, sistem ujian, serta pembuatan sertifikat otomatis.
 
 ---
 
