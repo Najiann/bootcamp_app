@@ -68,16 +68,6 @@
       <div class="col-md-6 text-center text-md-start">
         <p class="mb-0 text-white-50">&copy; 2023 BYTEX. All rights reserved.</p>
       </div>
-      <div class="col-md-6 text-center text-md-end">
-        <div class="payment-methods">
-          <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa" class="me-2">
-          <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard" class="me-2">
-          <img src="https://via.placeholder.com/40x25?text=PP" alt="PayPal" class="me-2">
-          <img src="https://via.placeholder.com/40x25?text=BCA" alt="Bank Transfer">
-        </div>
-      </div>
-    </div>
-  </div>
 </footer>
 
 <!-- Back to Top Button -->

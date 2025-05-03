@@ -35,7 +35,7 @@ $i = 0;
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.5.1/css/all.min.css">
   <style>
     .course-header {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      background: linear-gradient(135deg, #6366F1, #3B82F6); /* soft elegant gradient */
       padding: 80px 0;
       color: white;
       margin-bottom: 50px;
@@ -63,22 +63,22 @@ $i = 0;
     .course-title {
       font-weight: 700;
       margin-bottom: 15px;
-      color: #2c3e50;
+      color: #1E293B; /* navy-gray */
     }
     .course-desc {
-      color: #7f8c8d;
+      color: #64748B; /* gray soft */
       margin-bottom: 20px;
     }
     .price {
       font-weight: 700;
-      color: #e74c3c;
+      color: #F97316; /* orange aksen */
       font-size: 1.2rem;
     }
     .category-badge {
       position: absolute;
       top: 10px;
       right: 10px;
-      background: #e74c3c;
+      background: #F97316;
       color: white;
       padding: 5px 10px;
       border-radius: 20px;
@@ -90,18 +90,20 @@ $i = 0;
     .filter-btn {
       margin: 0 5px;
       border-radius: 20px;
+      color: #2563EB;
+      border-color: #2563EB;
     }
+    .filter-btn.active,
+    .filter-btn:hover {
+      background-color: #2563EB;
+      color: white;
+      border-color: #2563EB;
+    }
+
   </style>
 </head>
 <body>
   <?php include 'header.php'; ?>
-
-  <section class="course-header text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Our Coding Courses</h1>
-      <p class="lead">Master in-demand tech skills with our comprehensive curriculum</p>
-    </div>
-  </section>
 
   <section id="courses" class="py-5">
     <div class="container">
@@ -110,10 +112,6 @@ $i = 0;
         <div class="d-flex justify-content-center">
           <div class="bg-warning" style="height: 10px; width: 100px; border-radius: 100px;"></div>
         </div>
-        <p class="mt-4 text-secondary col-lg-8 mx-auto" style="font-weight: 800;">
-          Tingkatkan karier di dunia teknologi dengan kursus coding dari mentor profesional. Mulai dari pemula hingga mahir,
-          kami menyediakan program yang dirancang untuk membantumu sukses di industri IT.
-        </p>
       </div>
 
       <div class="filter-buttons text-center">

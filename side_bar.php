@@ -68,7 +68,7 @@ $profilePath = file_exists("images/image_profil/" . $userImage) ? "images/image_
         <i class="fa-solid fa-gauge"></i> Dashboard
     </a>
     <a href="courses.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'courses.php' ? 'active' : ''; ?>">
-        <i class="fa-solid fa-book"></i> Kursus
+        <i class="fa-solid fa-book"></i> Courses
     </a>
     <a href="testimoni.php" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'testimoni.php' ? 'active' : ''; ?>">
         <i class="fa-solid fa-star"></i> Testimoni

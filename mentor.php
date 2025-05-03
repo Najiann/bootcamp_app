@@ -66,13 +66,6 @@ include 'db.php';
 <body>
   <?php include 'header.php'; ?>
 
-  <section class="mentor-header text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Meet Our Expert Mentors</h1>
-      <p class="lead">Learn from industry professionals with years of experience in tech</p>
-    </div>
-  </section>
-
   <section id="trainers" class="py-5">
     <div class="container">
       <div class="text-center mb-5">

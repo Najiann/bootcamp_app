@@ -17,69 +17,72 @@ include 'db.php';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.5.1/css/all.min.css">
   <style>
     .testimonial-header {
-      background: linear-gradient(135deg, #f093fb, #f5576c);
+      background: linear-gradient(135deg, #0A74DA, #2C3E50);
       padding: 80px 0;
       color: white;
       margin-bottom: 50px;
-    }
-    .review-card {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
-    .review-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
-    .reviewer-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #007bff;
-    }
-    .reviewer-name {
-      font-weight: 700;
-      color: #2c3e50;
-    }
-    .reviewer-title {
-      color: #7f8c8d;
-      font-style: italic;
-    }
-    .review-content {
-      color: #34495e;
-      line-height: 1.8;
-      position: relative;
-      padding-top: 20px;
-    }
-    .review-content:before {
-      content: '"';
-      font-size: 60px;
-      color: #007bff;
-      opacity: 0.2;
-      position: absolute;
-      top: -20px;
-      left: -10px;
-      font-family: serif;
-    }
-    .rating {
-      color: #f39c12;
-      margin-bottom: 10px;
-    }
+  }
+
+  .review-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: all 0.3s ease;
+    height: 100%;
+    border-left: 5px solid #0A74DA;
+  }
+
+  .review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+
+  .reviewer-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #F4C542;
+  }
+
+  .reviewer-name {
+    font-weight: 700;
+    color: #2C3E50;
+  }
+
+  .reviewer-title {
+    color: #7f8c8d;
+    font-style: italic;
+  }
+
+  .review-content {
+    color: #1A1A1A;
+    line-height: 1.8;
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .review-content:before {
+    content: '"';
+    font-size: 60px;
+    color: #0A74DA;
+    opacity: 0.2;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-family: serif;
+  }
+
+  .rating {
+    color: #F4C542;
+    margin-bottom: 10px;
+  }
+
   </style>
 </head>
 <body>
   <?php include 'header.php'; ?>
-
-  <section class="testimonial-header text-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-4">Success Stories</h1>
-      <p class="lead">Hear from our graduates about their journey in tech</p>
-    </div>
-  </section>
 
   <section id="reviews" class="py-5">
     <div class="container">

@@ -156,7 +156,7 @@ $result = $conn->query($sql);
       </div>
     </section>
 
-  <section id="classes" class="py-5">
+  <section id="class" class="py-5">
     <div class="container">
       <!-- Başlık Kısmı -->
       <div class="text-center mb-5">
@@ -352,7 +352,7 @@ $result = $conn->query($sql);
     </div>
   </section>
 
-  <section id="purchase" class="py-5">
+  <section id="classes" class="py-5">
     <div class="container">
       <!-- Başlık -->
       <div class="text-center mb-5">
