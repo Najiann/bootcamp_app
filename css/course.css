@@ -1,0 +1,141 @@
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #6366f1;
+    --accent: #f97316;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray: #64748b;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .course-hero {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    padding: 100px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .course-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background-image: url('images/coding-pattern.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.1;
+  }
+  
+  .course-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    background: white;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .course-body {
+    padding: 20px;
+  }
+  
+  .course-title {
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .course-desc {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .price-tag {
+    background-color: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .btn-enroll {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-enroll:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+  
+  .filter-btn {
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin: 0 5px 10px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .filter-btn.active {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .divider {
+    height: 4px;
+    width: 80px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 15px auto;
+  }
+  
+  .badge-new {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 768px) {
+    .course-hero {
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .course-hero::before {
+      display: none;
+    }
+  }

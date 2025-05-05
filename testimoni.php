@@ -1,89 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-include 'db.php';
+require_once 'db.php';
+require_once 'layout.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="images/logoYGINI.png">
-  <title>BYTEX - Testimonials</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.5.1/css/all.min.css">
-  <style>
-    .testimonial-header {
-      background: linear-gradient(135deg, #0A74DA, #2C3E50);
-      padding: 80px 0;
-      color: white;
-      margin-bottom: 50px;
-  }
-
-  .review-card {
-    background: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-    transition: all 0.3s ease;
-    height: 100%;
-    border-left: 5px solid #0A74DA;
-  }
-
-  .review-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-  }
-
-  .reviewer-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #F4C542;
-  }
-
-  .reviewer-name {
-    font-weight: 700;
-    color: #2C3E50;
-  }
-
-  .reviewer-title {
-    color: #7f8c8d;
-    font-style: italic;
-  }
-
-  .review-content {
-    color: #1A1A1A;
-    line-height: 1.8;
-    position: relative;
-    padding-top: 20px;
-  }
-
-  .review-content:before {
-    content: '"';
-    font-size: 60px;
-    color: #0A74DA;
-    opacity: 0.2;
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    font-family: serif;
-  }
-
-  .rating {
-    color: #F4C542;
-    margin-bottom: 10px;
-  }
-
-  </style>
-</head>
-<body>
-  <?php include 'header.php'; ?>
-
+<div class="content-card">
   <section id="reviews" class="py-5">
     <div class="container">
       <div class="text-center mb-5">
@@ -146,7 +66,7 @@ include 'db.php';
           </div>
         </div>
 
-        <!-- Testimonial 3 - Added new testimonial -->
+        <!-- Testimonial 3 -->
         <div class="col-lg-6">
           <div class="review-card">
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
@@ -170,7 +90,7 @@ include 'db.php';
           </div>
         </div>
 
-        <!-- Testimonial 4 - Added new testimonial -->
+        <!-- Testimonial 4 -->
         <div class="col-lg-6">
           <div class="review-card">
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
@@ -197,10 +117,14 @@ include 'db.php';
       </div>
     </div>
   </section>
+</div>
 
-  <?php include 'footer.php'; ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// JavaScript khusus untuk halaman testimonials bisa ditambahkan di sini
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Testimonials page loaded');
+});
+</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
 <?php $conn->close(); ?>

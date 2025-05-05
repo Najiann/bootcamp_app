@@ -1,0 +1,62 @@
+.testimonial-header {
+    background: linear-gradient(135deg, #0A74DA, #2C3E50);
+    padding: 80px 0;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.review-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+  height: 100%;
+  border-left: 5px solid #0A74DA;
+}
+
+.review-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.reviewer-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #F4C542;
+}
+
+.reviewer-name {
+  font-weight: 700;
+  color: #2C3E50;
+}
+
+.reviewer-title {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.review-content {
+  color: #1A1A1A;
+  line-height: 1.8;
+  position: relative;
+  padding-top: 20px;
+}
+
+.review-content:before {
+  content: '"';
+  font-size: 60px;
+  color: #0A74DA;
+  opacity: 0.2;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-family: serif;
+}
+
+.rating {
+  color: #F4C542;
+  margin-bottom: 10px;
+}
