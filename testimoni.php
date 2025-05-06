@@ -23,8 +23,8 @@ require_once 'layout.php';
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
               <img src="images/arip3.jpeg" alt="Reviewer" class="reviewer-img">
               <div>
-                <h4 class="reviewer-name mb-0">Ade Arip</h4>
-                <p class="reviewer-title mb-0">Frontend Developer</p>
+                <h4 class="reviewer-name mb-0">Ade Arief Somadany</h4>
+                <p class="reviewer-title mb-0">Game Developer</p>
                 <div class="rating">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -70,9 +70,9 @@ require_once 'layout.php';
         <div class="col-lg-6">
           <div class="review-card">
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Reviewer" class="reviewer-img">
+              <img src="images/kim_bum.png" alt="Reviewer" class="reviewer-img">
               <div>
-                <h4 class="reviewer-name mb-0">Sarah Johnson</h4>
+                <h4 class="reviewer-name mb-0">Kim Bum</h4>
                 <p class="reviewer-title mb-0">Data Scientist</p>
                 <div class="rating">
                   <i class="fas fa-star"></i>
@@ -94,9 +94,9 @@ require_once 'layout.php';
         <div class="col-lg-6">
           <div class="review-card">
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reviewer" class="reviewer-img">
+              <img src="images/wonwoo.png" alt="Reviewer" class="reviewer-img">
               <div>
-                <h4 class="reviewer-name mb-0">Michael Chen</h4>
+                <h4 class="reviewer-name mb-0">Jeon Wonwoo</h4>
                 <p class="reviewer-title mb-0">DevOps Engineer</p>
                 <div class="rating">
                   <i class="fas fa-star"></i>
@@ -121,7 +121,6 @@ require_once 'layout.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// JavaScript khusus untuk halaman testimonials bisa ditambahkan di sini
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Testimonials page loaded');
 });

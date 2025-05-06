@@ -87,14 +87,16 @@ if (!file_exists($profilePath)) {
                 <p>MERGEO2020.4.79</p>
                 <p>(Amount of Servedation)</p>
             </div>
-            
+
+            <hr>
+
             <!-- University Info -->
             <div class="nav-section-title">University</div>
             <div class="university-info">
-                <p class="title">SIMAN I DEPOK</p>
+                <p class="title">SMKN 1 DEPOK</p>
                 <p>Major</p>
-                <p>Pengembangan Perangkat Lunak dan Gim (PF.G)</p>
-                <p><small>[Member] Nabila Saisabila</small></p>
+                <p>Pengembangan Perangkat Lunak dan Gim (PPLG)</p>
+                <p><small>[Member] BYTEX</small></p>
             </div>
             
             <hr>

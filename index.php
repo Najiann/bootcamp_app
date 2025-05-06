@@ -70,12 +70,12 @@ $result = $conn->query($sql);
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="#hero">Home</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="#trainers">Mentors</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#classes">Classes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#trainers">Mentors</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#reviews">Testimonials</a>
@@ -312,7 +312,7 @@ $result = $conn->query($sql);
               <img src="images/busis.jpeg" alt="Trainer">
               <div class="trainer-info">
                 <h4 class="trainer-name">Siska Rahmadani,S.Kom</h4>
-                <p class="trainer-title">guru cyber security</p>
+                <p class="trainer-title">Guru Cyber Security</p>
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@ $result = $conn->query($sql);
               <img src="images/paher.jpg" alt="Trainer">
               <div class="trainer-info">
                 <h4 class="trainer-name">HERI SRI PURNOMO, S.Kom.</h4>
-                <p class="trainer-title">pemrograman WEB</p>
+                <p class="trainer-title">Pemrograman WEB</p>
               </div>
             </div>
           </div>
@@ -342,7 +342,7 @@ $result = $conn->query($sql);
               <img src="images/bucic.jpg" alt="Trainer">
               <div class="trainer-info">
                 <h4 class="trainer-name">CICIH SRI RAHAYU, S.Kom.</h4>
-                <p class="trainer-title">kepala pemrograman</p>
+                <p class="trainer-title">Kepala Pemrograman</p>
               </div>
             </div>
           </div>
@@ -437,8 +437,8 @@ $i = 0;
             <div class="reviewer-info d-flex align-items-center gap-3 mb-3">
               <img src="images/arip3.jpeg" alt="Reviewer" class="reviewer-img">
               <div>
-                <h4 class="reviewer-name mb-0">Ade Arip</h4>
-                <p class="reviewer-title mb-0">Bapak Kondangan Yg Gabut</p>
+                <h4 class="reviewer-name mb-0">Ade Arief Somadany</h4>
+                <p class="reviewer-title mb-0">Game Developer</p>
               </div>
             </div>
             <div class="review-content">
@@ -455,7 +455,7 @@ $i = 0;
               <img src="images/bima.png" alt="Reviewer" class="reviewer-img">
               <div>
                 <h4 class="reviewer-name mb-0">Alfiansyah Bima</h4>
-                <p class="reviewer-title mb-0">Mas-Mas Kondangan </p>
+                <p class="reviewer-title mb-0">Full Stack Developer</p>
               </div>
             </div>
             <div class="review-content">
